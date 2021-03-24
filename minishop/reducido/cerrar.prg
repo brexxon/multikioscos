@@ -1,0 +1,11 @@
+*** 
+*** ReFox X  #UK933629  MANRIQUE ORELLANA  MANSOFT SYSTEMS [VFP80]
+***
+SET EXCLUSIVE OFF
+SET MULTILOCKS ON
+CLOSE DATABASES
+ENDPROC
+**
+*** 
+*** ReFox - retrace your steps ... 
+***

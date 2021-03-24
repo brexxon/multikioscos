@@ -1,0 +1,447 @@
+*** 
+*** ReFox X  #UK933629  MANRIQUE ORELLANA  MANSOFT SYSTEMS [VFP80]
+***
+SET SYSMENU TO
+SET SYSMENU AUTOMATIC
+DEFINE PAD _3lj0ly4wq OF  ;
+       _MSYSMENU PROMPT  ;
+       "ARCHIVOS" SKIP FOR acceso =  ;
+       .F. KEY ALT+A, "" COLOR  ;
+       SCHEME 3
+DEFINE PAD _3lj0ly4wr OF  ;
+       _MSYSMENU PROMPT "STOCK"  ;
+       SKIP FOR acceso = .F. KEY  ;
+       ALT+S, "" COLOR SCHEME 3
+DEFINE PAD _3lj0ly4ws OF  ;
+       _MSYSMENU PROMPT  ;
+       "INFORMES" SKIP FOR acceso =  ;
+       .F. KEY ALT+I, "" COLOR  ;
+       SCHEME 3
+DEFINE PAD _3lj0ly4wt OF  ;
+       _MSYSMENU PROMPT "VARIOS"  ;
+       SKIP FOR acceso = .F. KEY  ;
+       ALT+V, "" COLOR SCHEME 3
+DEFINE PAD _3lj0ly4wu OF  ;
+       _MSYSMENU PROMPT  ;
+       "FACTURACION" SKIP FOR  ;
+       acceso = .F. KEY ALT+F, ""  ;
+       COLOR SCHEME 3
+ON PAD _3lj0ly4wq OF _MSYSMENU ACTIVATE;
+POPUP archivos
+ON PAD _3lj0ly4wr OF _MSYSMENU ACTIVATE;
+POPUP stock
+ON PAD _3lj0ly4ws OF _MSYSMENU ACTIVATE;
+POPUP informes
+ON PAD _3lj0ly4wt OF _MSYSMENU ACTIVATE;
+POPUP varios
+ON PAD _3lj0ly4wu OF _MSYSMENU ACTIVATE;
+POPUP facturacio
+DEFINE POPUP archivos SHADOW  ;
+       MARGIN RELATIVE COLOR  ;
+       SCHEME 4
+DEFINE BAR 1 OF archivos PROMPT  ;
+       "PROVEEDORES" MESSAGE  ;
+       "Alta, baja y modificaciones de proveedores"  ;
+       SKIP FOR mtablas(1)  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\misc28.ico"
+DEFINE BAR 2 OF archivos PROMPT  ;
+       "RUBROS" MESSAGE  ;
+       "Alta, baja y modificacion de rubros"  ;
+       SKIP FOR mtablas(2)  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\desdefila.bmp"
+DEFINE BAR 3 OF archivos PROMPT  ;
+       "COMBOS" MESSAGE  ;
+       "Agrupar clientes de cuenta corriente segun condicion"  ;
+       SKIP FOR mtablas(3)  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\export.bmp"
+ON SELECTION BAR 1 OF archivos DO FORM;
+PROVEEDORES
+ON SELECTION BAR 2 OF archivos DO FORM;
+RUBROS
+ON SELECTION BAR 3 OF archivos DO FORM;
+COMBOS
+DEFINE POPUP stock SHADOW MARGIN  ;
+       RELATIVE COLOR SCHEME 4
+DEFINE BAR 1 OF stock PROMPT  ;
+       "REPOSICION DE ARTICULOS"  ;
+       MESSAGE  ;
+       "Repone al stock las mercaderias compradas"  ;
+       SKIP FOR otaller(1)  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\parametr.bmp"
+DEFINE BAR 2 OF stock PROMPT  ;
+       "PEDIDO DE ARTICULOS"  ;
+       MESSAGE  ;
+       "Pedido de articulos a proveedores segun faltantes"  ;
+       SKIP FOR otaller(2)  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\point01.ico"
+DEFINE BAR 3 OF stock PROMPT  ;
+       "ARTICULOS CON STOCK"  ;
+       MESSAGE  ;
+       "Listado de articulos que trabajan con stock"  ;
+       SKIP FOR otaller(3)  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\estampilla2.bmp"
+ON SELECTION BAR 1 OF stock DO FORM VENDECT2R
+ON SELECTION BAR 2 OF stock DO FORM PEDIDOM
+ON SELECTION BAR 3 OF stock DO FORM USASTOCK
+DEFINE POPUP informes SHADOW  ;
+       MARGIN RELATIVE COLOR  ;
+       SCHEME 4
+DEFINE BAR 1 OF informes PROMPT  ;
+       "VENTAS" MESSAGE  ;
+       "Informe de ventas segun diferentes criterios"  ;
+       SKIP FOR consult(1)  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\interf~1.bmp"
+DEFINE BAR 2 OF informes PROMPT  ;
+       "PRECIOS" MESSAGE  ;
+       "Listas de precios segun criterios"  ;
+       SKIP FOR consult(2)  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\copiar.bmp"
+DEFINE BAR 3 OF informes PROMPT  ;
+       "CLIENTES" MESSAGE  ;
+       "Listado de clientes con cuenta corriente"  ;
+       SKIP FOR consult(3)  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\crdfle04.ico"
+DEFINE BAR 4 OF informes PROMPT  ;
+       "FACTURAS PROVEEDORES"  ;
+       SKIP FOR consult(4)  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\checkok.ico"
+DEFINE BAR 5 OF informes PROMPT  ;
+       "CUENTA CORRIENTE" SKIP  ;
+       FOR consult(5) PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\crdfle13.ico"
+DEFINE BAR 6 OF informes PROMPT  ;
+       "REPOSICIONES" MESSAGE  ;
+       "LISTADO DE REPOSICIONES DE ARTICULOS"  ;
+       SKIP FOR consult(6)  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\arw10ne.ico"
+DEFINE BAR 7 OF informes PROMPT  ;
+       "DEVOLUCIONES" MESSAGE  ;
+       "INFORME DEVOLUCIONES POR FECHA"  ;
+       SKIP FOR consult(7)  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\clip03.ico"
+ON SELECTION BAR 1 OF informes DO FORM;
+INFOVENTA
+ON SELECTION BAR 2 OF informes DO FORM;
+INFOLISTAP
+ON SELECTION BAR 3 OF informes DO FORM;
+LISC
+ON BAR 4 OF informes ACTIVATE POPUP newitem
+ON BAR 5 OF informes ACTIVATE POPUP _2401egmrf
+ON BAR 6 OF informes ACTIVATE POPUP _2401emkvr
+ON SELECTION BAR 7 OF informes DO FORM;
+REPRED
+DEFINE POPUP newitem SHADOW  ;
+       MARGIN RELATIVE COLOR  ;
+       SCHEME 4
+DEFINE BAR 1 OF newitem PROMPT  ;
+       "PENDIENTES DE PAGO"  ;
+       MESSAGE  ;
+       "FACTURAS DE PROVEEDORES PENDIENTES DE PAGO"  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\check5.ico"
+DEFINE BAR 2 OF newitem PROMPT  ;
+       "PAGADAS" MESSAGE  ;
+       "FACTURAS DE PROVEEDORES PAGADAS"  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\checkok.ico"
+ON SELECTION BAR 1 OF newitem DO FORM;
+PRINTPA2
+ON SELECTION BAR 2 OF newitem DO FORM;
+PRINTPA
+DEFINE POPUP _2401egmrf SHADOW  ;
+       MARGIN RELATIVE COLOR  ;
+       SCHEME 4
+DEFINE BAR 1 OF _2401egmrf PROMPT  ;
+       "COBRANZA POR GRUPO"  ;
+       MESSAGE  ;
+       "INFORME DE COBRANZA POR GRUPO"  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\crdfle04.ico"
+DEFINE BAR 2 OF _2401egmrf PROMPT  ;
+       "COBRANZA DIARIA" MESSAGE  ;
+       "INFORME DE COBRANZA DE CUENTA CORRIENTE POR DIA"  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\periodo.bmp"
+ON SELECTION BAR 1 OF _2401egmrf DO FORM;
+INFOCOBROS
+ON SELECTION BAR 2 OF _2401egmrf DO FORM;
+INFOPA
+DEFINE POPUP _2401emkvr SHADOW  ;
+       MARGIN RELATIVE COLOR  ;
+       SCHEME 4
+DEFINE BAR 1 OF _2401emkvr PROMPT  ;
+       "POR FECHA" MESSAGE  ;
+       "REPOSICIONES POR FECHA"  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\point01.ico"
+DEFINE BAR 2 OF _2401emkvr PROMPT  ;
+       "POR PROVEEDOR" MESSAGE  ;
+       "INFORME DE REPOSICIONES POR PROVEEDOR Y FECHA"  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\isidoro.ico"
+DEFINE BAR 3 OF _2401emkvr PROMPT  ;
+       "POR ARTICULO" MESSAGE  ;
+       "INFORME DE REPOSICIONES POR ARTICULO"  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\print.ico"
+ON SELECTION BAR 1 OF _2401emkvr DO FORM;
+INFOMANU
+ON SELECTION BAR 2 OF _2401emkvr DO FORM;
+INFOMANUP
+ON SELECTION BAR 3 OF _2401emkvr DO FORM;
+INFOMANUA
+DEFINE POPUP varios SHADOW MARGIN  ;
+       RELATIVE COLOR SCHEME 4
+DEFINE BAR 1 OF varios PROMPT  ;
+       "COTIZACION CTA CTE"  ;
+       MESSAGE  ;
+       "CAMBIAR EL PORCENTAJE A LOS PRECIOS DE CUENTA CORRIENTE"  ;
+       SKIP FOR reporte(1)  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\iconos\masiconos\objetos\alert.ico"
+DEFINE BAR 2 OF varios PROMPT  ;
+       "INTERES DIARIO" MESSAGE  ;
+       "MODIFICAR EL PORCENTAJE DE INTERES DIARIO"  ;
+       SKIP FOR reporte(2)  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\iconos\masiconos\objetos\blocka.ico"
+DEFINE BAR 3 OF varios PROMPT  ;
+       "USUARIOS" MESSAGE  ;
+       "PONE EN CERO EL STOCK DE UN DETERMINADO PROVEEDOR"  ;
+       SKIP FOR reporte(3)  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\iconos\masiconos\objetos\calculator 3.ico"
+DEFINE BAR 4 OF varios PROMPT  ;
+       "VENDEDORES" MESSAGE  ;
+       "ADMINISTRACION DE VENDEDORES"  ;
+       SKIP FOR reporte(4)  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\iconos\comics\antifaz.ico"
+DEFINE BAR 5 OF varios PROMPT "INGRESOS & EGRESOS";
+MESSAGE "INGRESE AQUI LAS VENTAS Y GASTOS QUE PUEDA TENER";
+SKIP FOR reporte(5) PICTURE "..\..\local fuente roman\pintu\fuente\iconos\masiconos\carpetas1\clipb14b.ico"
+DEFINE BAR 6 OF varios PROMPT  ;
+       "CONFIGURACIONES" SKIP FOR  ;
+       reporte(6) PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\iconos\iconos\masiconos\wxp\mios\off.ico"
+DEFINE BAR 7 OF varios PROMPT  ;
+       "BACK UP" SKIP FOR  ;
+       reporte(7) PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\iconos\comics\upa.ico"
+DEFINE BAR 8 OF varios PROMPT  ;
+       "INDICES" SKIP FOR  ;
+       reporte(8) PICTURE  ;
+       "iconos\masiconos\misc2\trffc06b.ico"
+DEFINE BAR 9 OF varios PROMPT  ;
+       "GUIA DEL USUARIO"
+DEFINE BAR 10 OF varios PROMPT  ;
+       "REINICIO STOCK" SKIP FOR  ;
+       reporte(9)
+ON SELECTION BAR 1 OF varios DO _3LJ0LY4WV;
+ IN LOCFILE("FUENTE\ELMENU";
+,"MPX;MPR|FXP;PRG";
+,"WHERE IS ELMENU?")
+ON SELECTION BAR 2 OF varios DO _3LJ0LY4WW;
+ IN LOCFILE("FUENTE\ELMENU";
+,"MPX;MPR|FXP;PRG";
+,"WHERE IS ELMENU?")
+ON SELECTION BAR 3 OF varios DO FORM USUARIOS
+ON SELECTION BAR 4 OF varios DO FORM VENDED
+ON SELECTION BAR 5 OF varios DO FORM BALA
+ON SELECTION BAR 6 OF varios DO FORM CONFIG
+ON SELECTION BAR 7 OF varios DO DATABACKUP.EXE
+ON SELECTION BAR 8 OF varios DO INDICES.EXE
+ON SELECTION BAR 9 OF varios RUN MULTIRUBRO.PDF
+ON SELECTION BAR 10 OF varios DO FORM;
+BORRAS
+DEFINE POPUP facturacio SHADOW  ;
+       MARGIN RELATIVE COLOR  ;
+       SCHEME 4
+DEFINE BAR 1 OF facturacio PROMPT  ;
+       "CLIENTES" MESSAGE  ;
+       "ARCHIVO DE CLIENTES CON CUIT PARA FACTURACION"  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\iconos\masiconos\wxp\mios\solo.ico"
+DEFINE BAR 2 OF facturacio PROMPT  ;
+       "FACTURA" MESSAGE  ;
+       "Facturador A y  B"  ;
+       PICTURE  ;
+       "..\..\local fuente roman\pintu\fuente\iconos\masiconos\otros\ico_manito.gif"
+DEFINE BAR 3 OF facturacio PROMPT  ;
+       "CAJA"
+ON SELECTION BAR 1 OF facturacio DO FORM;
+CLIE
+ON SELECTION BAR 2 OF facturacio DO FORM;
+FACTURA
+ON BAR 3 OF facturacio ACTIVATE POPUP;
+_2hf0q3m7a
+DEFINE POPUP _2hf0q3m7a SHADOW  ;
+       MARGIN RELATIVE COLOR  ;
+       SCHEME 4
+DEFINE BAR 1 OF _2hf0q3m7a PROMPT  ;
+       "APERTURA"
+DEFINE BAR 2 OF _2hf0q3m7a PROMPT  ;
+       "MOVIMIENTOS"
+DEFINE BAR 3 OF _2hf0q3m7a PROMPT  ;
+       "ARQUEO"
+ON SELECTION BAR 1 OF _2hf0q3m7a DO _3LJ0LY4X6;
+ IN LOCFILE("FUENTE\ELMENU";
+,"MPX;MPR|FXP;PRG";
+,"WHERE IS ELMENU?")
+ON SELECTION BAR 2 OF _2hf0q3m7a DO _3LJ0LY4X7;
+ IN LOCFILE("FUENTE\ELMENU";
+,"MPX;MPR|FXP;PRG";
+,"WHERE IS ELMENU?")
+ON SELECTION BAR 3 OF _2hf0q3m7a DO _3LJ0LY4X8;
+ IN LOCFILE("FUENTE\ELMENU";
+,"MPX;MPR|FXP;PRG";
+,"WHERE IS ELMENU?")
+ENDPROC
+**
+PROCEDURE _3lj0ly4wv
+CLOSE DATABASES
+DO abrir0
+SELECT moneda
+GOTO TOP
+LOCAL pretu
+pretu = MESSAGEBOX( ;
+        "Desea realizar el procedimiento",  ;
+        036, "ATENCION")
+IF pretu = 6
+     SELECT moneda
+     BROWSE NOMENU NODELETE TITLE  ;
+            "Salga con Escape"
+     cmessagetitle = 'AVISO'
+     cmessagetext = 'DESEA GUARDAR LOS CAMBIOS?'
+     ndialogtype = 0292
+     nanswer = MESSAGEBOX(cmessagetext,  ;
+               ndialogtype,  ;
+               cmessagetitle)
+     DO CASE
+          CASE nanswer = 6
+               SELECT merca
+               GOTO TOP
+               WAIT WINDOW NOWAIT  ;
+                    "ACTUALIZANDO PRECIOS, POR FAVOR ESPERE..."
+               SCAN
+                    REPLACE merca.pesos  ;
+                            WITH  ;
+                            merca.lista1 *  ;
+                            moneda.dollar
+               ENDSCAN
+               SELECT merca
+               = TABLEUPDATE(.T.)
+               SELECT moneda
+               = TABLEUPDATE(.T.)
+               WAIT WINDOW NOWAIT  ;
+                    "ACTUALIZACION TERMINADA..."
+          CASE nanswer = 7
+               WAIT WINDOW NOWAIT  ;
+                    'NO SE GUARDARON LOS CAMBIOS'
+     ENDCASE
+ENDIF
+CLOSE DATABASES
+ENDPROC
+**
+PROCEDURE _3lj0ly4ww
+DO abrir
+SELECT inte
+BROWSE NOMENU
+cmessagetitle = 'ATENCION'
+cmessagetext = 'DESEA GUARDAR LOS CAMBIOS?'
+ndialogtype = 0292
+nanswer = MESSAGEBOX(cmessagetext,  ;
+          ndialogtype,  ;
+          cmessagetitle)
+DO CASE
+     CASE nanswer = 6
+          SELECT inte
+          = TABLEUPDATE(.T.)
+     CASE nanswer = 7
+          WAIT WINDOW NOWAIT  ;
+               'NO SE GUARDARON LOS CAMBIOS'
+ENDCASE
+CLOSE DATABASES
+ENDPROC
+**
+PROCEDURE _3lj0ly4x6
+IF USED("abrek")
+     SELECT abrek
+     CURSORSETPROP("Buffering", 5,  ;
+                  "abrek")
+ELSE
+     SELECT 0
+     USE 'abrek'
+     CURSORSETPROP("Buffering", 5,  ;
+                  "abrek")
+ENDIF
+GOTO BOTTOM
+IF ALLTRIM(abrek.estado) =  ;
+   "ABIERTO"
+     MESSAGEBOX( ;
+               "HAY UNA CAJA ABIERTA...debe cerrarla primero",  ;
+               48, "ATENCION")
+ELSE
+     DO FORM abre
+ENDIF
+ENDPROC
+**
+PROCEDURE _3lj0ly4x7
+IF USED("abrek")
+     SELECT abrek
+     CURSORSETPROP("Buffering", 5,  ;
+                  "abrek")
+ELSE
+     SELECT 0
+     USE 'abrek'
+     CURSORSETPROP("Buffering", 5,  ;
+                  "abrek")
+ENDIF
+GOTO BOTTOM
+IF ALLTRIM(abrek.estado) =  ;
+   "ABIERTO"
+     DO FORM movi
+ELSE
+     MESSAGEBOX( ;
+               "NO HAY UNA CAJA ABIERTA...debe abrir una caja primero en el menu FACTURACION",  ;
+               48, "ATENCION")
+ENDIF
+ENDPROC
+**
+PROCEDURE _3lj0ly4x8
+IF USED("abrek")
+     SELECT abrek
+     CURSORSETPROP("Buffering", 5,  ;
+                  "abrek")
+ELSE
+     SELECT 0
+     USE 'abrek'
+     CURSORSETPROP("Buffering", 5,  ;
+                  "abrek")
+ENDIF
+GOTO BOTTOM
+IF ALLTRIM(abrek.estado) =  ;
+   "ABIERTO"
+     DO FORM arqueo
+ELSE
+     MESSAGEBOX( ;
+               "NO HAY UNA CAJA ABIERTA...debe abrir una caja primero en el menu FACTURACION",  ;
+               48, "ATENCION")
+ENDIF
+ENDPROC
+**
+*** 
+*** ReFox - retrace your steps ... 
+***
