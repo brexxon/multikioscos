@@ -198,7 +198,30 @@ WITH _SCREEN
 ENDWITH
 ON ERROR DO MESAERRO WITH  ERROR(), PROGRAM(),;
 LINENO(), MESSAGE()
-ON SHUTDOWN DO SALIDA
+
+
+*!*	*!* EJEMPLO DE INTEGRACIÓN VFPsControlSkin
+*!*	*!* By VFPSTEAM BI SOLUTIONS 
+
+*!*	SET CONSOLE OFF
+*!*	SET TALK OFF
+*!*	*!* INICIAR VFPSCONTROLSKIN (REALIZARLO SIEMPRE DESDE SU MAIN PRINCIPAL)
+*!*	*!* PARAMETROS
+*!*	*!* APPLICATION = ENTORNO PRINCIPAL DE VISUAL FOXPRO
+*!*	*!* _SCREEN     = OBJETO DONDE SE VA A CREAR VFPsControlSkin
+*!*	*!* 1           = TIPOS DE SKIN VA DESDE 1 A 8
+
+*!*	IF FILE("VFPsControlSkin.Exe")
+*!*	 
+*!*	   VFPsControlSkin(APPLICATION,_SCREEN,"5") && SE ENVIA EL STYLE OFFICE 2010 BLUE
+*!*	ENDIF
+
+*!*	*!* LLENAR PARAMETROS VFPS MESSAGEBOX
+*!*	_SCREEN.llHyperLinks  = .T.                 &&COLOCAR EN .T. SI SE DESEA USAR HYPERLINKS.
+*!*	_SCREEN.lcTituloText  = "Atención !!"       &&TITULO OPCIONAL QUE DESEAMOS VISUALIZAR ANTES DEL MENSAJE EN EL VFPS MESSAGEBOX
+*!*	_SCREEN.lcFooterText  = "<A HREF=" + ["] + "http://www.brexxon.net.ar" + ["] + ">Brexxon Tecnologia " + ALLTRIM(STR(YEAR(DATE()))) + "</A> Grandes Soluciones Para Negocios Pequeños"
+*!*	_SCREEN.llVista8      = .T.				    &&SI DESEA USAR EL ESTILO DE VFPS MESSAGEBOX DE WINDOWS 8 COLOCARLO EN .T.
+*!*	_SCREEN.lnDialogWidth = 0	
 *!*	use ventas EXCLUSIVE
 *!*	IF FSIZE("numero") = 0
 *!*	ALTER TABLE ventas ADD COLUMN numero c(10) NULL
@@ -220,6 +243,7 @@ ON SHUTDOWN DO SALIDA
 *!*	***
 *!*	ENDIF
 *!*	use
+ON SHUTDOWN DO SALIDA
 IF _login(1)
      IF SUBSTR(SYS(0), 1, 9) =  ;
         "mostrador"
